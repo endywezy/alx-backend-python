@@ -20,6 +20,8 @@ class TestGithubOrgClient(unittest.TestCase):
         """Test that GithubOrgClient.org returns the correct value."""
         mock_get_json.return_value = expected_payload
         client = GithubOrgClient(org_name)
+        
+        # Call the org method
         result = client.org()
         self.assertEqual(result, expected_payload)
         mock_get_json.assert_called_once_with(
