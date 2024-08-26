@@ -15,7 +15,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2),
     ])
-    def test_access_nested_map(self, nested_map: dict, path: tuple, 
+    def test_access_nested_map(self, nested_map: dict, path: tuple,
                                expected: object) -> None:
         """Test access_nested_map with various inputs."""
         self.assertEqual(access_nested_map(nested_map, path), expected)
@@ -24,7 +24,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",)),
         ({"a": 1}, ("a", "b")),
     ])
-    def test_access_nested_map_exception(self, nested_map: dict, 
+    def test_access_nested_map_exception(self, nested_map: dict,
                                          path: tuple) -> None:
         """Test that access_nested_map raises a KeyError for invalid paths."""
         with self.assertRaises(KeyError) as context:
@@ -67,11 +67,11 @@ class TestMemoize(unittest.TestCase):
                 """Return the result of a_method."""
                 return self.a_method()
 
-        with patch.object(TestClass, 'a_method', return_value=42) as mock_method:
+        with patch.object(TestClass, 'a_method', return_value=42) as mock_m:
             test_instance = TestClass()
             self.assertEqual(test_instance.a_property, 42)
             self.assertEqual(test_instance.a_property, 42)
-            mock_method.assert_called_once()
+            mock_m.assert_called_once()
 
 
 if __name__ == "__main__":
